@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 
 namespace Eli.Azure.Functions.Test
 {
-    public class ProductTriggers
+    public class ProductsTrigger
     {
         private readonly IRepository<Product> _ProductsRepository;
         private readonly IMapper _Mapper;
 
-        public ProductTriggers(
+        public ProductsTrigger(
             IRepository<Product> productsRepository,
             IMapper mapper)
         {
