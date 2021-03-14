@@ -57,7 +57,7 @@ namespace Eli.Azure.Functions.Extensions.FromQuery
             if (typeof(Array).IsAssignableFrom(Type))
             {
                 object array = Array.CreateInstance(resolvedType, convertedValues.Length)!;
-                
+
                 for (int i = 0; i < ((Array)array).Length; i++)
                 {
                     ((Array)array).SetValue(convertedValues[i], i);
