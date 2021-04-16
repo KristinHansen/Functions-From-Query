@@ -9,13 +9,34 @@ namespace Azure.Functions.FromQuerySample
     {
         public void Configure(IWebJobsBuilder builder)
         {
-            builder.AddFromQueryExtension(options =>
-            {
-                options.Converters.Add(new DateTimeConverter());
-            });
+            builder.AddFromQueryExtension();
         }
     }
 }
 ```
+
+If you need custom converters, you can create and add these yourself:
+```csharp
+public class DateTimeConverter : IStringValuesConverter
+{
+    public Type Type => typeof(DateTime);
+
+    public object Convert(StringValues values)
+        => DateTime.Parse(values);
+}
+
+public class WebJobsStartup : IWebJobsStartup
+{
+    public void Configure(IWebJobsBuilder builder)
+    {
+        builder.AddFromQueryExtension(options =>
+        {
+            options.Converters.Add(new DateTimeConverter());
+        });
+    }
+}
+```
+
+Custom converters will always take priority over the internal converters.
 
 See the sample project for a full example with a working `HttpTrigger`.
