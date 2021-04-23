@@ -37,6 +37,6 @@ public class WebJobsStartup : IWebJobsStartup
 }
 ```
 
-Custom converters will always take priority over the internal converters.
+Custom converters will always take priority over the internal converters. This also allows the user to override the internal converters, `int` and `guid`, should this be necessary.
 
 See the sample project for a full example with a working `HttpTrigger`.
